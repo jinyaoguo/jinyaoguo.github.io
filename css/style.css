@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Mandali&family=Open+Sans&family=Roboto&family=Sawarabi+Gothic&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+}
+
+header{
+    width: 100%;
+}
+.navbar{
+    font-size: 20px;
+    background-color: black;
+}
+.navbar-brand{
+    font-size: 30px;
+    font-family: 'Aboreto', cursive;
+    color: white;
+}
+.navbar-brand:hover{
+    color: white;
+}
+.navbar-brand:focus{
+    color: white;
+}
+.nav-link{
+    color: rgba(255, 255, 255, 0.6);
+    padding-bottom: 0;
+}
+.nav-link:hover{
+    color: white;
+}
+.nav-link.disabled{
+    color: rgba(128, 128, 128, 0.315);
+}
+.navbar-nav .nav-link.active{
+    color: white;
+    border-bottom: 5px solid white;
+}
+.navbar-toggler{
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.6);
+    border: rgba(255, 255, 255, 0.6);
+}
+#navbarSupportedContent{
+    justify-content: flex-end;
+}
+
+@media (min-width: 0px) and (max-width: 767px){
+    .navbar-nav{
+        display: flex;
+        align-items: center;
+    }
+    .nav-item{
+        width: fit-content;
+    }
+}
+.title{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 35px;
+    padding: 15px;
+    border-top: 8px solid rgba(0, 0, 12, 0.307);
+    border-bottom: 8px solid rgba(0, 0, 12, 0.307);
+}
+.titles{
+    font-size: 65px;
+    font-weight: bold;
+    color: black;
+}
+.title-index{
+    font-size: 65px;
+    font-family: 'Aboreto', cursive;
+    font-weight: bold;
+    color: black;
+}
+.img-perfil{
+    max-height: 400px;
+    max-width: 400px;
+    padding-bottom: 12px;
+}
+.img-perfil img{
+    border-radius: 50%;
+    box-shadow: 6px 6px 6px #333333;
+}
+.text-index{
+    text-align: justify;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.text-index p{
+    color: black;
+}
+.cv{
+    margin-top: 15px;
+    width: 100%;
+}
+.accordion{
+    margin: 35px;
+    --bs-accordion-border-color: white;
+}
+.accordion-button{
+    font-weight: bold;
+    color: rgb(13, 13, 119);
+}
+.accordion-button:not(.collapsed){
+    background-color: rgba(3, 3, 67, 0.307);
+    color: rgb(13, 13, 119);
+}
+button.accordion-button:focus{
+    background-color: rgb(3, 3, 67);
+    color: white;
+}
+.accordion-img{
+    max-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    padding-bottom: 12px;
+}
+.accordion-img img{
+    box-shadow: 4px 4px 4px #333333;
+}
+.accordion-text{
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+i{
+    text-align: center;
+}
+.info{
+    padding: 0;
+    list-style: none;
+}
+.list{
+    margin: 35px;
+}
+a{
+    text-decoration: none;
+    color: rgb(13, 13, 119);
+}
+.list-item{
+    font-weight: bold;
+    color: rgb(13, 13, 119);
+}
+
+@media (min-width: 0px) and (max-width: 767px){
+    header{
+        width: 100%;
+    }
+    main{
+        width: 100%;
+    }
+    .title-index{
+        font-size: 60px;
+    }
+}
