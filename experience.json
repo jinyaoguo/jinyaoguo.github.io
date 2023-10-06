@@ -12,7 +12,7 @@
         "title": "Cobalt Strike external C2 in Rust ",
         "field": "System Security ",
         "time": "2022.6 - 2023.8 ",
-        "text": "An implementation of Cobalt Strike external C2's cilent in Rust, which can avoid killing of firewalls (Windows Defender、Horong Security、360 Defender etc.)",
+        "text": "An implementation of Cobalt Strike external C2's cilent in Rust, which can avoid killing of firewalls (Windows Defender、Horong Security、360 Defender etc.) \n Find more here: https://github.com/jinyaoguo/CS-Exteral-C2inRust",
         "id": "Research-Two"
     }
 
