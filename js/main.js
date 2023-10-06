@@ -99,7 +99,7 @@ work().then(data =>{
         item.innerHTML = `<h2 class="accordion-header" id="panelsStayOpen-heading${element.id}">
         <button class = "accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse${element.id}" aria-expanded="true" aria-controls="panelsStayOpen-collapse${element.id}">${element.company}</button></h2>`;
         item.setAttribute("class", "accordion-item");
-        accordionExperience.appendChild(item);
+        accordionWork.appendChild(item);
 
         let body = document.createElement("div");
         body.innerHTML = `<div class="accordion-body accordion-text"><i>${element.time}</i>

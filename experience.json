@@ -5,7 +5,15 @@
         "field": "System Security ",
         "time": "2022.10 - 2023.6 ",
         "text": "This project is based on computer system logs and alarm information to conduct trace analysis of received attacks. Given the log files and alarm events as input, it can automatically generate attack chain diagrams and attack entry point information for further analysis by security personnel.",
-        "id": "Progress-One"
+        "id": "Research-One"
+    },
+
+    {
+        "title": "Cobalt Strike external C2 in Rust ",
+        "field": "System Security ",
+        "time": "2022.6 - 2023.8 ",
+        "text": "An implementation of Cobalt Strike external C2's cilent in Rust, which can avoid killing of firewalls (Windows Defender、Horong Security、360 Defender etc.)",
+        "id": "Research-Two"
     }
 
 ]
