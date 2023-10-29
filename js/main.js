@@ -6,7 +6,7 @@ const accordionExperience = document.getElementById('accordionPanelsStayOpenExpe
 const accordionWork = document.getElementById('accordionPanelsStayOpenWork')
 
 async function papers(){
-    const response = await fetch ('../papers.json')
+    const response = await fetch ('../resources/papers.json')
     return await response.json()
 }
 
@@ -29,7 +29,7 @@ papers().then(data =>{
 })
 
 async function progress(){
-    const response = await fetch ('../progress.json')
+    const response = await fetch ('../resources/reprogress.json')
     return await response.json()
 }
 
@@ -52,7 +52,7 @@ progress().then(data =>{
 })
 
 async function policy(){
-    const response = await fetch ('../policy.json')
+    const response = await fetch ('../resources/policy.json')
     return await response.json()
 }
 
@@ -66,7 +66,7 @@ policy().then(data =>{
 })
 
 async function experience(){
-    const response = await fetch ('../experience.json')
+    const response = await fetch ('../resources/experience.json')
     return await response.json()
 }
 
@@ -89,7 +89,7 @@ experience().then(data =>{
 })
 
 async function work(){
-    const response = await fetch ('../work.json')
+    const response = await fetch ('../resources/work.json')
     return await response.json()
 }
 
