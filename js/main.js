@@ -20,8 +20,10 @@ papers().then(data =>{
 
         let body = document.createElement("div");
         // body.innerHTML = `<div class="accordion-body"><div class="row d-flex justify-content-center"><div class="accordion-text"><i>${element.coauthor}</i> \n <i> ${element.subtitle}</i><div class="col-xl-4 accordion-img"><img src="../img/${element.img}.jpg" class="img-fluid" alt="img-${element.id}"></div>
-        body.innerHTML = `<div class="accordion-body"><div class="row d-flex justify-content-center"><div class="accordion-text"><i>${element.coauthor}</i> \n
-        <p>${element.text} \n [<a href="${element.link}">Paper</a>]</p></div></div></div>`;
+        body.innerHTML = `<div class="accordion-body"><div class="row d-flex justify-content-center"><div class="accordion-text"><i>${element.coauthor}</i>
+        <p>${element.text}</p>
+        <p>[<a href="${element.link}">Paper</a>]</p>
+        </div></div></div>`;
         body.setAttribute("id", `panelsStayOpen-collapse${element.id}`);
         body.setAttribute("class", "accordion-collapse collapse");
         body.setAttribute("aria-labelledby", "panelsStayOpen-headingOn");
