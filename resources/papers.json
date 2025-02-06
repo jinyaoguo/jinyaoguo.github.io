@@ -1,12 +1,10 @@
 [
     {
-        "title": "Payments Under the Table: Evidence from Brazil",
-        "coauthor": "Joint with Maximiliano Lauletta and Roberto Hsu Rocha",
-        "subtitle": "Funded by Center of Equitable Growth and Center of Effective Global Action (CEGA)",
-        "text": "In this paper, we study formal workers receiving part of their salary ''off the books'', which we refer to as ''payments under the table'' (PUT). We conduct the first extensive survey among Brazilian formal workers to understand the extent and mechanics of this type of informality. Despite the widespread belief that third-party reported income exhibits very low evasion, we find that PUT are sizeable and proportionally larger for higher-income workers. Back-of-the-envelope calculations suggest that PUT generate revenue lost from income tax of around 6.8% of total revenues collected by the income tax. Moreover, we show that PUT affects the government budget significantly more than classic informality.  Additionally, we use quasi-experimental variation to shed light on the underlying incentives of employers and employees to engage in collusive tax evasion. First, using the ceiling to the social security contributions in Brazil, we show bunching evidence suggesting that workers closer to retirement exhibit wage reporting patterns consistent with PUT. Bunchers are more likely to be managers and work in smaller firms. Bunchers are also more likely to own a firm that can be used to receive the PUT as a contractor of the firm where they are employees. Finally, we incorporate novel data on labor lawsuits related to PUT to induce variation in employers' incentives to engage in collusive tax evasion. We find a large increase in reported wages for incumbent workers of firms that were sued for PUT, suggesting that employers learn about the risk associated with PUT.    ",
-        "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4270665",
-        "slides": "https://www.dropbox.com/s/b2pml1i7588i989/slides_NTA.pdf?dl=0",
-        "img": 1,
-        "id": "Papers-One"
+        "title": "RepoAudit: An Autonomous LLM-Agent for Repository-Level Code Auditing",
+        "coauthor": "Jinyao Guo, Chengpeng Wang, Xiangzhe Xu, Zian Su, Xiangyu Zhang",
+        "text": "Code auditing is a code review process with the goal of finding bugs. Large Language Models (LLMs) have shown substantial potential in this task, offering the ability to analyze programs without compilation and enabling customized bug detection following specified prompts. However, applying LLMs to repository-level code auditing presents notable challenges. The inherent context limits and hallucinations of LLMs can lead to the low quality of bug reports. Meanwhile, the large size of software repositories introduces substantial time and token costs, hindering efficiency and scalability in real-world scenarios. This work introduces an autonomous LLM-agent, RepoAudit, designed to enable precise and efficient repository-level code auditing. Equipped with the agent memory, RepoAudit explores the code repository on demand, analyzing data-flow facts along different feasible program paths in individual functions. It also introduces the validator to check the data-flow facts for hallucination mitigation and examine the satisfiability of path conditions of potential buggy paths, which enables RepoAudit to discard false positives in the code auditing. Our experiment shows that RepoAudit powered by Claude 3.5 Sonnet successfully finds 38 true bugs in 15 real-world systems, consuming 0.44 hours and $2.54 per project on average.",
+        "link": "https://arxiv.org/pdf/2501.18160",
+        "id": "RepoAudit"
     }
+
 ]
