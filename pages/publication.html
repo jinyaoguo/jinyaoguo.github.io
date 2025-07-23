@@ -7,7 +7,55 @@
     <!-- <link rel="icon" href="../img/logo.png"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <title>Jinyao Guo</title>
+
+    <style>
+        .publication-container {
+            margin: 40px auto;
+            max-width: 1000px;
+        }
+        .publication-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .publication-item {
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+        .pub-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .pub-authors {
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        .pub-venue {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        .pub-abstract {
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        .pub-links a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #0066cc;
+        }
+        .pub-links a:hover {
+            text-decoration: underline;
+        }
+        .pub-links i {
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -36,24 +84,50 @@
             </div>
         </nav>
     </header>
-    <main class="container">
-        <div class="container title">
-            <h1 class="titles">Publications</h1>
+    
+    <main>
+        <div class="publication-container">
+            <div class="publication-title">
+                <h1>Publications</h1>
+            </div>
+            <div id="publications-list">
+                <!-- Publications will be loaded here dynamically -->
+            </div>
         </div>
-        <section id="papers">
-            <h2>Publications</h2>
-            <div class="publications-container" id="publicationsContainer"></div>
-        </section>
-        <section id="experience">
-            <h2>Previous Projects</h2>
-            <div class="projects-container" id="projectsContainer"></div>
-        </section>
-        <!-- <section id="work">
-            <h2>Work Experiences</h2>
-            <div class="work-container" id="workContainer"></div>
-        </section> -->
     </main>
-    <script src="../js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../resources/papers.json')
+                .then(response => response.json())
+                .then(papers => {
+                    const publicationsList = document.getElementById('publications-list');
+                    
+                    papers.forEach(paper => {
+                        const paperElement = document.createElement('div');
+                        paperElement.className = 'publication-item';
+                        
+                        paperElement.innerHTML = `
+                            <div class="pub-title">${paper.title}</div>
+                            <div class="pub-authors">${paper.author}</div>
+                            <div class="pub-venue">${paper.publication}</div>
+                            <div class="pub-abstract">${paper.abstract}</div>
+                            <div class="pub-links">
+                                ${paper.paper_link ? `<a href="${paper.paper_link}" target="_blank"><i class="fas fa-file-pdf"></i>Paper</a>` : ''}
+                                ${paper.code_link ? `<a href="${paper.code_link}" target="_blank"><i class="fab fa-github"></i>Code</a>` : ''}
+                            </div>
+                        `;
+                        
+                        publicationsList.appendChild(paperElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading publications:', error);
+                    document.getElementById('publications-list').innerHTML = '<p>Error loading publications. Please try again later.</p>';
+                });
+        });
+    </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
