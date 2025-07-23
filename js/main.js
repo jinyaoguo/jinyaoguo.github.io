@@ -1,33 +1,28 @@
 // OBTENER DATOS
-const accordionPapers = document.getElementById('accordionPanelsStayOpenPapers')
+const publicationsContainer = document.getElementById('publicationsContainer')
+const projectsContainer = document.getElementById('projectsContainer')
 const accordionProgress = document.getElementById('accordionPanelsStayOpenProgress')
 const listPolicy = document.getElementById('listPolicy')
-const accordionExperience = document.getElementById('accordionPanelsStayOpenExperience')
-const accordionWork = document.getElementById('accordionPanelsStayOpenWork')
+const workContainer = document.getElementById('workContainer')
 
 async function papers(){
-    const response = await fetch ('../resources/papers.json')
+    const response = await fetch('../resources/papers.json')
     return await response.json()
 }
 
-papers().then(data =>{
+papers().then(data => {
     data.forEach(element => {
         let item = document.createElement("div");
-        item.innerHTML = `<h2 class="accordion-header" id="panelsStayOpen-heading${element.id}">
-        <button class = "accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse${element.id}" aria-expanded="true" aria-controls="panelsStayOpen-collapse${element.id}">${element.title}</button></h2>`;
-        item.setAttribute("class", "accordion-item");
-        accordionPapers.appendChild(item);
-
-        let body = document.createElement("div");
-        // body.innerHTML = `<div class="accordion-body"><div class="row d-flex justify-content-center"><div class="accordion-text"><i>${element.coauthor}</i> \n <i> ${element.subtitle}</i><div class="col-xl-4 accordion-img"><img src="../img/${element.img}.jpg" class="img-fluid" alt="img-${element.id}"></div>
-        body.innerHTML = `<div class="accordion-body"><div class="row d-flex justify-content-center"><div class="accordion-text"><i>${element.author}</i><br> 
-        <p>${element.text}</p>
-        <p>[<a href="${element.link}">Paper</a>]</p>
-        </div></div></div>`;
-        body.setAttribute("id", `panelsStayOpen-collapse${element.id}`);
-        body.setAttribute("class", "accordion-collapse collapse");
-        body.setAttribute("aria-labelledby", "panelsStayOpen-headingOn");
-        item.appendChild(body);
+        item.setAttribute("class", "publication-item");
+        item.innerHTML = `
+            <div class="publication-title">${element.title}</div>
+            <div class="publication-authors">${element.author}</div>
+            <div class="publication-abstract">${element.text}</div>
+            <div class="publication-links">
+                <a href="${element.link}" target="_blank">[Paper]</a>
+            </div>
+        `;
+        publicationsContainer.appendChild(item);
     });
 })
 
@@ -69,33 +64,44 @@ policy().then(data =>{
 })
 
 async function experience(){
-    const response = await fetch ('../resources/experience.json')
+    const response = await fetch('../resources/experience.json')
     return await response.json()
 }
 
-experience().then(data =>{
+experience().then(data => {
     data.forEach(element => {
         let item = document.createElement("div");
-        item.innerHTML = `<h2 class="accordion-header" id="panelsStayOpen-heading${element.id}">
-        <button class = "accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse${element.id}" aria-expanded="true" aria-controls="panelsStayOpen-collapse${element.id}">${element.title}</button></h2>`;
-        item.setAttribute("class", "accordion-item");
-        accordionExperience.appendChild(item);
-
-        let body = document.createElement("div");
-        body.innerHTML = `<div class="accordion-body accordion-text"><i>${element.field}</i>\n<i>${element.time}</i>
-        <p>${element.text}</p></div>`;
-        body.setAttribute("id", `panelsStayOpen-collapse${element.id}`);
-        body.setAttribute("class", "accordion-collapse collapse");
-        body.setAttribute("aria-labelledby", "panelsStayOpen-headingOn");
-        item.appendChild(body);
+        item.setAttribute("class", "project-item");
+        item.innerHTML = `
+            <div class="project-title">${element.title}</div>
+            <div class="project-details">${element.field} • ${element.time}</div>
+            <div class="project-description">${element.text}</div>
+        `;
+        projectsContainer.appendChild(item);
     });
 })
 
 async function work(){
-    const response = await fetch ('../resources/work.json')
+    const response = await fetch('../resources/work.json')
     return await response.json()
 }
 
+work().then(data => {
+    data.forEach(element => {
+        if (workContainer) {
+            let item = document.createElement("div");
+            item.setAttribute("class", "project-item");
+            item.innerHTML = `
+                <div class="project-title">${element.title}</div>
+                <div class="project-details">${element.field} • ${element.time}</div>
+                <div class="project-description">${element.text}</div>
+            `;
+            workContainer.appendChild(item);
+        }
+    });
+})
+
+/* Original code preserved for reference
 work().then(data =>{
     data.forEach(element => {
         let item = document.createElement("div");
@@ -113,3 +119,4 @@ work().then(data =>{
         item.appendChild(body);
     });
 })
+*/
