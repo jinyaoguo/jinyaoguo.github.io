@@ -6,7 +6,8 @@
         "publication": "Preprint",
         "paper_link": "https://arxiv.org/abs/2507.15671",
         "code_link": "",
-        "id": "BugScope"
+        "id": "BugScope",
+        "year": "2025"
     },
     {
         "title": "RepoAudit: An Autonomous LLM-Agent for Repository-Level Code Auditing",
@@ -15,7 +16,8 @@
         "publication": "Proceedings of The 42nd International Conference on Machine Learning (ICML 2025)",
         "paper_link": "https://arxiv.org/pdf/2501.18160",
         "code_link": "https://github.com/PurCL/RepoAudit",
-        "id": "RepoAudit"
+        "id": "RepoAudit",
+        "year": "2025"
     },
     {
         "title": "PROSEC: Fortifying Code LLMs with Proactive Security Alignment",
@@ -24,6 +26,7 @@
         "publication": "Proceedings of The 42nd International Conference on Machine Learning (ICML 2025)",
         "paper_link": "https://arxiv.org/pdf/2411.12882",
         "code_link": "https://github.com/PurCL/ProSec",
-        "id": "PROSEC"
+        "id": "PROSEC",
+        "year": "2025"
     }
 ]
