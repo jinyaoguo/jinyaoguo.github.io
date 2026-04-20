@@ -1,0 +1,28 @@
+{
+    "reviews": [
+        {
+            "venue": "International Conference on Learning Representations (ICLR)",
+            "year": "2026",
+            "type": "Conference",
+            "id": "ICLR2026"
+        },
+        {
+            "venue": "AAAI 2026 Workshop on Next-Gen Code Development with Collaborative AI Agents",
+            "year": "2026",
+            "type": "Workshop",
+            "id": "AAAIW2026NextGenCodeDev"
+        },
+        {
+            "venue": "International Conference on Machine Learning (ICML)",
+            "year": "2026",
+            "type": "Conference",
+            "id": "ICML2026"
+        },
+        {
+            "venue": "Annual Meeting of the Association for Computational Linguistics (ACL)",
+            "year": "2026",
+            "type": "Conference",
+            "id": "ACL2026"
+        }
+    ]
+}

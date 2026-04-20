@@ -1,0 +1,16 @@
+[
+    {
+        "Course": "CS 307: Software Engineering I",
+        "time": "2025 Spring",
+        "school": "Purdue",
+        "position": "Graduate Teaching Assistant",
+        "id": "CS307"
+    },
+    {
+        "Course": "Project Management and Software Design",
+        "time": "2023 Spring",
+        "school": "Shanghai Jiao Tong University",
+        "position": "Graduate Teaching Assistant",
+        "id": "PMSD"
+    }
+]

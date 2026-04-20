@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+    <link rel="manifest" href="../img/site.webmanifest">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Jinyao Guo - Services</title>
+
+    <style>
+        .services-container {
+            margin: 40px auto;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        .services-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            margin-top: 50px;
+            color: #333;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
+        }
+        .section-title:first-of-type {
+            margin-top: 20px;
+        }
+        .service-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #0066cc;
+        }
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .service-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000;
+            margin: 0;
+        }
+        .service-time {
+            background-color: #0066cc;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .service-details {
+            color: #666;
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+        .service-position {
+            color: #444;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+        .service-venue {
+            color: #444;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .service-type {
+            display: inline-block;
+            background-color: #e9ecef;
+            color: #495057;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+        @media (max-width: 768px) {
+            .service-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .service-time {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html">Jinyao Guo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="publication.html">Publication</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/jinyaoguo">Codes</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="services-container">
+            <div class="services-title">
+                <h1>Academic Services</h1>
+            </div>
+            
+            <!-- Teaching Section -->
+            <h2 class="section-title">
+                <i class="fas fa-chalkboard-teacher"></i> Teaching
+            </h2>
+            <div id="teaching-list">
+                <!-- Teaching records will be loaded here dynamically -->
+            </div>
+            
+            <!-- Reviewer Section -->
+            <h2 class="section-title">
+                <i class="fas fa-file-alt"></i> Reviews
+            </h2>
+            <div id="reviewer-list">
+                <!-- Reviewer records will be loaded here dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Load teaching and reviewer data using XMLHttpRequest for local file compatibility
+        document.addEventListener('DOMContentLoaded', function() {
+            const teachingList = document.getElementById('teaching-list');
+            const reviewerList = document.getElementById('reviewer-list');
+            
+            // Check if using local file protocol
+            const isLocalFile = window.location.protocol === 'file:';
+            
+            function loadTeachingData() {
+                if (isLocalFile) {
+                    const xhr = new XMLHttpRequest();
+                    xhr.overrideMimeType("application/json");
+                    xhr.open('GET', '../resources/teach.json', true);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4) {
+                            if (xhr.status === 200 || xhr.status === 0) {
+                                try {
+                                    const teaching = JSON.parse(xhr.responseText);
+                                    renderTeaching(teaching);
+                                } catch (e) {
+                                    console.error('Error parsing teaching JSON:', e);
+                                    teachingList.innerHTML = '<p>Error loading teaching data.</p>';
+                                }
+                            } else {
+                                teachingList.innerHTML = '<p>Error loading teaching data.</p>';
+                            }
+                        }
+                    };
+                    xhr.send(null);
+                } else {
+                    fetch('../resources/teach.json')
+                        .then(response => response.json())
+                        .then(teaching => renderTeaching(teaching))
+                        .catch(error => {
+                            console.error('Error loading teaching data:', error);
+                            teachingList.innerHTML = '<p>Error loading teaching data.</p>';
+                        });
+                }
+            }
+            
+            function loadServicesData() {
+                if (isLocalFile) {
+                    const xhr = new XMLHttpRequest();
+                    xhr.overrideMimeType("application/json");
+                    xhr.open('GET', '../resources/services.json', true);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4) {
+                            if (xhr.status === 200 || xhr.status === 0) {
+                                try {
+                                    const services = JSON.parse(xhr.responseText);
+                                    renderReviewer(services.reviews || []);
+                                } catch (e) {
+                                    console.error('Error parsing services JSON:', e);
+                                    reviewerList.innerHTML = '<p>Error loading reviewer data.</p>';
+                                }
+                            } else {
+                                reviewerList.innerHTML = '<p>Error loading reviewer data.</p>';
+                            }
+                        }
+                    };
+                    xhr.send(null);
+                } else {
+                    fetch('../resources/services.json')
+                        .then(response => response.json())
+                        .then(services => renderReviewer(services.reviews || []))
+                        .catch(error => {
+                            console.error('Error loading services data:', error);
+                            reviewerList.innerHTML = '<p>Error loading reviewer data.</p>';
+                        });
+                }
+            }
+            
+            function renderTeaching(teaching) {
+                teachingList.innerHTML = '';
+                
+                // Sort by time (most recent first)
+                teaching.sort((a, b) => {
+                    const yearA = parseInt(a.time.split(' ')[0]);
+                    const yearB = parseInt(b.time.split(' ')[0]);
+                    return yearB - yearA;
+                });
+                
+                teaching.forEach(course => {
+                    const courseElement = document.createElement('div');
+                    courseElement.className = 'service-item';
+                    
+                    courseElement.innerHTML = `
+                        <div class="service-header">
+                            <h3 class="service-title">${course.Course}</h3>
+                            <span class="service-time">${course.time}</span>
+                        </div>
+                        <div class="service-details">${course.school}</div>
+                        <div class="service-position">${course.position}</div>
+                    `;
+                    
+                    teachingList.appendChild(courseElement);
+                });
+            }
+            
+            function renderReviewer(reviews) {
+                reviewerList.innerHTML = '';
+                
+                // Sort by year (most recent first)
+                reviews.sort((a, b) => parseInt(b.year) - parseInt(a.year));
+                
+                reviews.forEach(review => {
+                    const reviewElement = document.createElement('div');
+                    reviewElement.className = 'service-item';
+                    
+                    reviewElement.innerHTML = `
+                        <div class="service-header">
+                            <h3 class="service-title">${review.venue}</h3>
+                            <span class="service-time">${review.year}</span>
+                        </div>
+                        <div class="service-venue">Reviewer</div>
+                        <span class="service-type">${review.type}</span>
+                    `;
+                    
+                    reviewerList.appendChild(reviewElement);
+                });
+            }
+            
+            // Load both datasets
+            loadTeachingData();
+            loadServicesData();
+        });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+    <link rel="manifest" href="../img/site.webmanifest">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Jinyao Guo</title>
+
+    <style>
+        .publication-container {
+            margin: 40px auto;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        .publication-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .publication-title h1 {
+            color: #333;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
+        }
+        .publication-item {
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: row;
+        }
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+        .pub-year {
+            flex: 0 0 80px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+            margin-right: 25px;
+        }
+        .pub-content {
+            flex: 1;
+        }
+        .pub-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #000;
+        }
+        .pub-authors {
+            margin-bottom: 8px;
+            font-style: normal;
+            color: #444;
+        }
+        .pub-venue {
+            margin-bottom: 12px;
+            color: #666;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+        .pub-abstract {
+            text-align: justify;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            overflow: hidden;
+            max-height: 4.5em;
+            position: relative;
+            transition: max-height 0.3s ease-out;
+        }
+        .pub-abstract.expanded {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in;
+        }
+        .abstract-toggle {
+            color: #0066cc;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 12px;
+            text-decoration: none;
+        }
+        .abstract-toggle:hover {
+            text-decoration: underline;
+        }
+        .pub-links {
+            margin-top: 8px;
+        }
+        .pub-links a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #0066cc;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .pub-links a:hover {
+            text-decoration: underline;
+        }
+        .pub-links i {
+            margin-right: 5px;
+        }
+        @media (max-width: 768px) {
+            .publication-item {
+                flex-direction: column;
+            }
+            .pub-year {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html">Jinyao Guo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Publication</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="services.html">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/jinyaoguo">Codes</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="publication-container">
+            <div class="publication-title">
+                <h1>Publications</h1>
+            </div>
+            <div id="publications-list">
+                <!-- Publications will be loaded here dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Load papers.json using one of these two methods:
+        // 1. Use fetch API if accessed via HTTP server
+        // 2. Use XMLHttpRequest if opened as a local file (file:// protocol)
+        document.addEventListener('DOMContentLoaded', function() {
+            const publicationsList = document.getElementById('publications-list');
+            
+            // 检测是否为本地文件协议
+            const isLocalFile = window.location.protocol === 'file:';
+            
+            function renderPapers(papers) {
+                // 确保每篇论文有year属性，如果没有，尝试从publication字符串提取，默认设为"未知年份"
+                papers.forEach(paper => {
+                    if (!paper.year) {
+                        // Try to extract year (four digits) from publication string
+                        const yearMatch = paper.publication && paper.publication.match(/\b(20\d{2})\b/);
+                        paper.year = yearMatch ? yearMatch[1] : "Unknown Year";
+                    }
+                });
+                
+                // 按年份对论文进行分组
+                const papersByYear = {};
+                papers.forEach(paper => {
+                    const year = paper.year || "Unknown Year";
+                    if (!papersByYear[year]) {
+                        papersByYear[year] = [];
+                    }
+                    papersByYear[year].push(paper);
+                });
+                
+                // 按年份降序排列
+                const sortedYears = Object.keys(papersByYear).sort((a, b) => b - a);
+                
+                // 清空当前内容
+                publicationsList.innerHTML = '';
+                
+                // 为每个论文创建DOM元素
+                sortedYears.forEach(year => {
+                    papersByYear[year].forEach(paper => {
+                        const paperElement = document.createElement('div');
+                        paperElement.className = 'publication-item';
+                        
+                        // 为摘要和切换按钮创建唯一ID
+                        const abstractId = `abstract-${paper.id || Math.random().toString(36).substr(2, 9)}`;
+                        const toggleId = `toggle-${paper.id || Math.random().toString(36).substr(2, 9)}`;
+                        
+                        paperElement.innerHTML = `
+                            <div class="pub-year">${year}</div>
+                            <div class="pub-content">
+                                <div class="pub-title">${paper.title}</div>
+                                <div class="pub-authors">${paper.author}</div>
+                                <div class="pub-venue">${paper.publication}</div>
+                                <div id="${abstractId}" class="pub-abstract">${paper.abstract}</div>
+                                <a id="${toggleId}" class="abstract-toggle">Show Abstract</a>
+                                <div class="pub-links">
+                                    ${paper.paper_link ? `<a href="${paper.paper_link}" target="_blank"><i class="fas fa-file-pdf"></i>Paper</a>` : ''}
+                                    ${paper.code_link ? `<a href="${paper.code_link}" target="_blank"><i class="fab fa-github"></i>Code</a>` : ''}
+                                </div>
+                            </div>
+                        `;
+                        
+                        publicationsList.appendChild(paperElement);
+                        
+                        // 添加展开/收起摘要的功能
+                        setTimeout(() => {
+                            const abstractElem = document.getElementById(abstractId);
+                            const toggleElem = document.getElementById(toggleId);
+                            
+                            if (abstractElem && toggleElem) {
+                                toggleElem.addEventListener('click', function() {
+                                    if (abstractElem.classList.contains('expanded')) {
+                                        abstractElem.classList.remove('expanded');
+                                        toggleElem.textContent = 'Show Abstract';
+                                    } else {
+                                        abstractElem.classList.add('expanded');
+                                        toggleElem.textContent = 'Hide Abstract';
+                                    }
+                                });
+                            }
+                        }, 0);
+                    });
+                });
+            }
+            
+            function loadPapers() {
+                if (isLocalFile) {
+                    // 使用XMLHttpRequest加载本地JSON文件
+                    const xhr = new XMLHttpRequest();
+                    xhr.overrideMimeType("application/json");
+                    xhr.open('GET', '../resources/papers.json', true);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4) {
+                            if (xhr.status === 200 || xhr.status === 0) { // 0 for local files
+                                try {
+                                    const papers = JSON.parse(xhr.responseText);
+                                    renderPapers(papers);
+                                } catch (e) {
+                                    console.error('Error parsing JSON:', e);
+                                    publicationsList.innerHTML = '<p>Error loading publication data. Please check if the papers.json format is correct.</p>';
+                                }
+                            } else {
+                                console.error('Error loading papers.json:', xhr.status);
+                                publicationsList.innerHTML = '<p>Error loading publication data. Please try again later.</p>';
+                            }
+                        }
+                    };
+                    xhr.send(null);
+                } else {
+                    // 使用fetch API加载JSON文件（通过HTTP服务器访问时）
+                    fetch('../resources/papers.json')
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response error');
+                            }
+                            return response.json();
+                        })
+                        .then(papers => {
+                            renderPapers(papers);
+                        })
+                        .catch(error => {
+                            console.error('Error loading publication data:', error);
+                            publicationsList.innerHTML = '<p>Error loading publication data. Please try again later.</p>';
+                        });
+                }
+            }
+            
+            // 加载论文数据
+            loadPapers();
+        });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
