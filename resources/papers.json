@@ -1,0 +1,82 @@
+[
+    {
+        "title": "BugScope: Learn to Detect Bugs Like Human",
+        "author": "<strong>Jinyao Guo</strong>, Chengpeng Wang, Dominic DeLuca, Jinjie Liu, Zhuo Zhang, Xiangyu Zhang",
+        "abstract": "Detecting software bugs remains a fundamental challenge due to the extensive diversity of real-world defects. Traditional static analysis tools often rely on symbolic workflows, which restrict their coverage and hinder adaptability to customized bugs with diverse anti-patterns. While recent advances incorporate large language models (LLMs) to enhance bug detection, these methods continue to struggle with sophisticated bugs and typically operate within limited analysis contexts. To address these challenges, we propose BugScope, an LLM-driven multi-agent system that emulates how human auditors learn new bug patterns from representative examples and apply that knowledge during code auditing. Given a set of examples illustrating both buggy and non-buggy behaviors, BugScope synthesizes a retrieval strategy to extract relevant detection contexts via program slicing and then constructs a tailored detection prompt to guide accurate reasoning by the LLM. Our evaluation on a curated dataset of 40 real-world bugs drawn from 21 widely-used open-source projects demonstrates that BugScope achieves 87.04% precision and 90.00% recall, surpassing state-of-the-art industrial tools by 0.44 in F1 score. Further testing on large-scale open-source systems, including the Linux kernel, uncovered 141 previously unknown bugs, of which 78 have been fixed and 7 confirmed by developers, highlighting BugScope's substantial practical impact.",
+        "publication": "Conference on Language Modeling (COLM 2026), Oral",
+        "paper_link": "../papers/2026-COLM-BugScope.pdf",
+        "code_link": "",
+        "id": "BugScope",
+        "year": "2026"
+    },
+    {
+        "title": "RepoAudit: An Autonomous LLM-Agent for Repository-Level Code Auditing",
+        "author": "<strong>Jinyao Guo</strong>*, Chengpeng Wang*, Xiangzhe Xu, Zian Su, Xiangyu Zhang",
+        "abstract": "Code auditing is a code review process with the goal of finding bugs. Large Language Models (LLMs) have shown substantial potential in this task, offering the ability to analyze programs without compilation and enabling customized bug detection following specified prompts. However, applying LLMs to repository-level code auditing presents notable challenges. The inherent context limits and hallucinations of LLMs can lead to the low quality of bug reports. Meanwhile, the large size of software repositories introduces substantial time and token costs, hindering efficiency and scalability in real-world scenarios. This work introduces an autonomous LLM-agent, RepoAudit, designed to enable precise and efficient repository-level code auditing. Equipped with the agent memory, RepoAudit explores the code repository on demand, analyzing data-flow facts along different feasible program paths in individual functions. It also introduces the validator to check the data-flow facts for hallucination mitigation and examine the satisfiability of path conditions of potential buggy paths, which enables RepoAudit to discard false positives in the code auditing. Our experiment shows that RepoAudit powered by Claude 3.5 Sonnet successfully finds 38 true bugs in 15 real-world systems, consuming 0.44 hours and $2.54 per project on average.",
+        "publication": "Proceedings of The 42nd International Conference on Machine Learning (ICML 2025)",
+        "paper_link": "../papers/2025-ICML-RepoAudit.pdf",
+        "code_link": "https://github.com/PurCL/RepoAudit",
+        "id": "RepoAudit",
+        "year": "2025"
+    },
+    {
+        "title": "RFCAudit: AI Agent for Auditing Protocol Implementations Against RFC Specifications",
+        "author": "Mingwei Zheng, Chengpeng Wang, Xuwei Liu, <strong>Jinyao Guo</strong>, Shiwei Feng, Xiangyu Zhang",
+        "abstract": "Protocol implementations are critical components of network systems, but ensuring their compliance with RFC specifications remains challenging. This paper presents RFCAudit, an AI agent designed to automatically audit protocol implementations against their corresponding RFC specifications. Our approach leverages large language models to understand both natural language specifications and code implementations, identifying potential compliance violations and security vulnerabilities. RFCAudit systematically analyzes protocol implementations by extracting key requirements from RFC documents and cross-referencing them with actual code behavior. Through extensive evaluation on real-world protocol implementations, we demonstrate that RFCAudit can effectively identify compliance issues that traditional testing methods might miss.",
+        "publication": "Proceedings of the 40th IEEE/ACM International Conference on Automated Software Engineering (ASE 2025)",
+        "paper_link": "../papers/2025-ASE-RFCAudit.pdf",
+        "code_link": "https://github.com/zmw12306/RFCAudit",
+        "id": "RFCAudit",
+        "year": "2025"
+    },
+    {
+        "title": "ProSec: Fortifying Code LLMs with Proactive Security Alignment",
+        "author": "Xiangzhe Xu*, Zian Su*, <strong>Jinyao Guo</strong>, Kaiyuan Zhang, Zhenting Wang, Xiangyu Zhang",
+        "abstract": "Recent advances in code-specific large language models (LLMs) have greatly enhanced code generation and refinement capabilities. However, the safety of code LLMs remains under-explored, posing potential risks as insecure code generated by these models may introduce vulnerabilities into real-world systems. Previous work proposes to collect security-focused instruction-tuning dataset from real-world vulnerabilities. It is constrained by the data sparsity of vulnerable code, and has limited applicability in the iterative post-training workflows of modern LLMs. In this paper, we propose ProSec, a novel proactive security alignment approach designed to align code LLMs with secure coding practices. ProSec systematically exposes the vulnerabilities in a code LLM by synthesizing error-inducing coding scenarios from Common Weakness Enumerations (CWEs), and generates fixes to vulnerable code snippets, allowing the model to learn secure practices through advanced preference learning objectives. The scenarios synthesized by ProSec triggers 25 times more vulnerable code than a normal instruction-tuning dataset, resulting in a security-focused alignment dataset 7 times larger than the previous work. Experiments show that models trained with ProSec is 29.2% to 35.5% more secure compared to previous work, with a marginal negative effect of less than 2 percentage points on model's utility.",
+        "publication": "Proceedings of The 42nd International Conference on Machine Learning (ICML 2025)",
+        "paper_link": "../papers/2025-ICML-ProSec.pdf",
+        "code_link": "https://github.com/PurCL/ProSec",
+        "id": "PROSEC",
+        "year": "2025"
+    },
+    {
+        "title": "Identifying Adversary Tactics and Techniques in Malware Binaries with an LLM Agent",
+        "author": "Zhou Xuan, Xiangzhe Xu, Mingwei Zheng, Louis Zheng-Hua Tan, <strong>Jinyao Guo</strong>, Tiantai Zhang, Le Yu, Chengpeng Wang, Xiangyu Zhang",
+        "abstract": "This work introduces an LLM agent that helps malware analysts recognize adversary tactics, techniques, and procedures in compiled binaries. The authors evaluate the agent on decompiled functions from several malware families and platforms and report its ability to recover analyst-labeled behaviors.",
+        "publication": "IEEE/ACM International Conference on Software Engineering (ICSE 2027), Accepted",
+        "paper_link": "../papers/2026-arXiv-Identifying-Adversary-Tactics-and-Techniques.pdf",
+        "code_link": "",
+        "id": "TTPScan",
+        "year": "2027"
+    },
+    {
+        "title": "Benchmarking Explainable Vulnerability Detection with Calling Contexts",
+        "author": "<strong>Jinyao Guo</strong>, Yaoyang Ye, Zhihao Guo, Mingwei Zheng, Tiantai Zhang, Xuwei Liu, Xiaolong Jin, Congyu Liu, Xiangzhe Xu, Zian Su, Ziyun Song, Zhou Xuan, Xiao Cheng, Chengpeng Wang, Xiangyu Zhang",
+        "abstract": "ManBo is a benchmark for assessing whether vulnerability detectors can identify software defects and explain their root causes using calling context. It pairs vulnerable and safe examples from open-source C/C++ projects with human-verified explanations and evaluates how well existing approaches use repository context.",
+        "publication": "Findings of the Association for Computational Linguistics: EMNLP 2026",
+        "paper_link": "../papers/2026-EMNLP-Findings-Benchmarking-Explainable-Vulnerability-Detection.pdf",
+        "code_link": "https://github.com/jinyaoguo/ManBo",
+        "id": "ManBo",
+        "year": "2026"
+    },
+    {
+        "title": "NESA: Relational Neuro-Symbolic Static Program Analysis",
+        "author": "Chengpeng Wang, Yifei Gao, Wuqi Zhang, Xuwei Liu, <strong>Jinyao Guo</strong>, Mingwei Zheng, Qingkai Shi, Xiangyu Zhang",
+        "abstract": "NESA combines neural reasoning with relational program analysis to support static analysis tasks. It addresses practical limitations of traditional static analysis workflows, including reliance on compilation and the difficulty of customizing analyses for different tasks.",
+        "publication": "Proceedings of the ACM on Software Engineering (FSE 2026)",
+        "paper_link": "../papers/2026-FSE-NESA.pdf",
+        "code_link": "https://github.com/chengpeng-wang/NESA",
+        "id": "NESA",
+        "year": "2026"
+    },
+    {
+        "title": "A Principled Approach for Detecting APTs in Massive Networks via Multi-Stage Causal Analytics",
+        "author": "Jiaping Gui, Mingjie Nie, <strong>Jinyao Guo</strong>, Futai Zou, Mati Ur Rehman, Wajih Ul Hassan",
+        "abstract": "NETGUARDIAN detects advanced persistent threats by linking anomalous network activity across stages of an intrusion. It uses stage-specific detection models and correlates their outputs to prioritize activity that warrants investigation in large enterprise networks.",
+        "publication": "IEEE International Conference on Computer Communications (INFOCOM 2025)",
+        "paper_link": "../papers/2025-INFOCOM-NetGuardian.pdf",
+        "code_link": "",
+        "id": "NETGUARDIAN",
+        "year": "2025"
+    }
+]
